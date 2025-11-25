@@ -12,9 +12,7 @@ class AppButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        onPress;
-      },
+      onTap: ()=>onPress(),
       child: Container(
         width: 311.w,
         height: 52.h,

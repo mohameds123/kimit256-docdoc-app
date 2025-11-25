@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kimit256docdoc/core/styling/text_style.dart';
+import 'package:kimit256docdoc/features/login/presentation/login_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../onboarding/presentation/screens/onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -13,13 +15,27 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  Future<bool?> getOnBoardingKey() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final seeOnboarding = prefs.getBool('see_onboarding');
+    print("===========xxxxxxxxxxxx $seeOnboarding");
+    return seeOnboarding;
+  }
+
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 7), () {
+    navigate();
+  }
+
+  void navigate() async {
+    final x = await getOnBoardingKey();
+    Timer(Duration(seconds: 2), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => OnboardingScreen()),
+        MaterialPageRoute(
+          builder: (_) => x == true ? LoginScreen() : OnboardingScreen(),
+        ),
       );
     });
   }
@@ -37,7 +53,7 @@ class _SplashScreenState extends State<SplashScreen> {
           ),
           //layer2
           Padding(
-            padding:  EdgeInsets.only(top: 380.0.h),
+            padding: EdgeInsets.only(top: 380.0.h),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
