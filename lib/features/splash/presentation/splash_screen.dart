@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kimit256docdoc/core/styling/text_style.dart';
-import 'package:kimit256docdoc/features/login/presentation/login_screen.dart';
+import 'package:kimit256docdoc/features/login/presentation/screens/login_screen.dart';
+import 'package:kimit256docdoc/routing/routes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../onboarding/presentation/screens/onboarding_screen.dart';
 
@@ -31,11 +32,9 @@ class _SplashScreenState extends State<SplashScreen> {
   void navigate() async {
     final x = await getOnBoardingKey();
     Timer(Duration(seconds: 2), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (_) => x == true ? LoginScreen() : OnboardingScreen(),
-        ),
+      Navigator.pushReplacementNamed(
+        context,x==true?Routes.login:Routes.onBoarding,
+
       );
     });
   }

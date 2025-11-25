@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kimit256docdoc/core/widgets/app_button.dart';
-import 'package:kimit256docdoc/features/login/presentation/login_screen.dart';
+import 'package:kimit256docdoc/features/login/presentation/screens/login_screen.dart';
 import 'package:kimit256docdoc/features/onboarding/presentation/widgets/doctor_widget.dart';
 import 'package:kimit256docdoc/features/onboarding/presentation/widgets/header_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';

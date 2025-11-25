@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kimit256docdoc/features/splash/presentation/splash_screen.dart';
+import 'package:kimit256docdoc/routing/app_router.dart';
+import 'package:kimit256docdoc/routing/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,6 +20,8 @@ class MyApp extends StatelessWidget {
       builder: (_ , child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
+          onGenerateRoute: AppRouter.generateRoute,
+          initialRoute: Routes.splash,
           title: 'DOC DOC APP',
           theme: ThemeData(
             scaffoldBackgroundColor: Colors.white
