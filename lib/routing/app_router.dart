@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kimit256docdoc/features/home/presentation/screens/home_screen.dart';
 import 'package:kimit256docdoc/features/login/presentation/screens/login_screen.dart';
 import 'package:kimit256docdoc/features/splash/presentation/splash_screen.dart';
 import 'package:kimit256docdoc/routing/routes.dart';
@@ -15,6 +16,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) =>  LoginScreen());
       case Routes.splash:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
+      case Routes.home:
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

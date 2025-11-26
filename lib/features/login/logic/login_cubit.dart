@@ -22,7 +22,9 @@ class LoginCubit extends Cubit<LoginStates> {
       }
     } catch (e) {
       print("============= Login Error ============== $e");
-      emit(LoginErrorState());
+      emit(LoginErrorState(
+        em: e.toString(),
+      ));
     }
   }
 }
