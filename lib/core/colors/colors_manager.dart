@@ -6,4 +6,6 @@ class ColorsManager {
   static final fillColor= Color.fromRGBO(253, 253, 255, 1);
   static final hintColor = Color.fromRGBO(194, 194, 194, 1);
   static final borderColor = Color.fromRGBO(237, 237, 237, 1);
+  static final lightgray = Color.fromRGBO(158, 158, 158, 1);
+  static final shadeOfBlack = Color.fromRGBO(36, 36, 36, 1);
 }

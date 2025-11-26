@@ -43,4 +43,15 @@ class TextStyling {
     fontWeight: FontWeight.w400,
     color: ColorsManager.darkGrey,
   );
+  static TextStyle black400size12 = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+    color: ColorsManager.shadeOfBlack,
+  );
+
+  static TextStyle gray400size11 = TextStyle(
+    fontSize: 11.sp,
+    fontWeight: FontWeight.w400,
+    color: ColorsManager.lightgray,
+  );
 }

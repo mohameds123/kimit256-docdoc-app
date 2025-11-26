@@ -40,6 +40,10 @@ dependencies:
   flutter_screenutil: ^5.9.3
   #Flutter plugin for reading and writing simple key-value pairs. Wraps NSUserDefaults on iOS and SharedPreferences on Android.
   shared_preferences: ^2.5.3
+  #Flutter widgets that make it easy to implement the BLoC (Business Logic Component) design pattern. Built to be used with the bloc state management package.
+  flutter_bloc: ^9.1.1
+  #A powerful HTTP networking package, supports Interceptors, Aborting and canceling a request, Custom adapters, Transformers, etc.
+  dio: ^5.9.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
