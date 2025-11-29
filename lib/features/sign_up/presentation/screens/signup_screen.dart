@@ -8,43 +8,48 @@ import 'package:kimit256docdoc/core/models/user_model.dart';
 import 'package:kimit256docdoc/features/login/logic/login_cubit.dart';
 import 'package:kimit256docdoc/features/login/logic/login_state.dart';
 import 'package:kimit256docdoc/features/login/presentation/widgets/welcome_widget.dart';
-
+import 'package:kimit256docdoc/features/sign_up/logic/cubit.dart';
 import '../../../../core/styling/text_style.dart';
 import '../../../../routing/routes.dart';
-import '../widgets/forget_pass.dart';
-import '../widgets/fotter_widget.dart';
+import '../../../login/presentation/widgets/forget_pass.dart';
+import '../../../login/presentation/widgets/fotter_widget.dart';
+import '../../logic/states.dart';
 
-class LoginScreen extends StatefulWidget {
-  LoginScreen({super.key});
+
+class SignUpScreen extends StatefulWidget {
+  SignUpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController emailController = TextEditingController();
-
   TextEditingController passController = TextEditingController();
+  TextEditingController passConfirmationController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController genderController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LoginCubit(),
-      child: BlocConsumer<LoginCubit, LoginStates>(
+      create: (context) => SignUpCubit(),
+      child: BlocConsumer<SignUpCubit, SignUpStates>(
         listener: (context, state) {
-          if (state is LoginSuccessState) {
+          if (state is SignUpSuccessState) {
             Navigator.pushReplacementNamed(context, Routes.home);
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(
-                  "Logged in successfully!",
+                  "Sign Up in successfully!",
                   style: TextStyling.white600size16,
                 ),
                 backgroundColor: ColorsManager.primaryColor,
                 duration: Duration(seconds: 2),
               ),
             );
-          } else if (state is LoginErrorState) {
+          } else if (state is SignUpErrorState) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(state.em, style: TextStyling.white600size16),
@@ -74,24 +79,48 @@ class _LoginScreenState extends State<LoginScreen> {
                       hintTxt: "Password",
                     ),
                     SizedBox(height: 12.h),
-                    ForgetPass(),
+                    AppFormField(
+                      textEditingController: passConfirmationController,
+                      hintTxt: "Password Confirmation",
+                    ),
                     SizedBox(height: 12.h),
+                    AppFormField(
+                      textEditingController: nameController,
+                      hintTxt: "name",
+                    ),
+                    SizedBox(height: 12.h),
+                    AppFormField(
+                      textEditingController: phoneController,
+                      hintTxt: "phone",
+                    ),
+                    SizedBox(height: 12.h),
+                    AppFormField(
+                      textEditingController: genderController,
+                      hintTxt: "gender",
+                    ),
+                    SizedBox(height: 12.h),
+
                     Center(
                       child: (state is LoginLoadingState)
                           ? CircularProgressIndicator()
                           : AppButton(
-                              buttonTxt: "Login",
-                              onPress: () {
-                                context.read<LoginCubit>().login(
-                                    UserModel(
-                                        email: emailController.text,
-                                        password: passController.text));
+                        buttonTxt: "Register",
+                        onPress: () {
+                          context.read<SignUpCubit>().signUp(
+                              UserModel(
+                                  email: emailController.text,
+                                  password: passController.text,
+                                gender: genderController.text,
+                                name: nameController.text,
+                                passwordConfirmation: passConfirmationController.text,
+                                phone: phoneController.text
+                              ));
 
-                              },
-                            ),
+                        },
+                      ),
                     ),
                     SizedBox(height: 12.h),
-                    FotterWidget(),
+
                   ],
                 ),
               ),

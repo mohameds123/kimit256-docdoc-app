@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kimit256docdoc/routing/routes.dart';
 
 import '../../../../core/styling/text_style.dart';
 
@@ -34,7 +35,11 @@ class FotterWidget extends StatelessWidget{
                 children: [
                   Text("Aleady have an account? ", style:TextStyling.black400size12),
                   SizedBox(width: 1,),
-                  Text("Sign Up", style:TextStyling.blue400size12),
+                  InkWell(
+                      onTap: (){
+                        Navigator.pushNamed(context, Routes.signUp);
+                      },
+                      child: Text("Sign Up", style:TextStyling.blue400size12)),
                 ],
               ),
             ),
