@@ -60,5 +60,10 @@ class TextStyling {
     fontWeight: FontWeight.w700,
     color: Colors.black,
   );
+  static TextStyle black700size16 = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w700,
+    color: Colors.black,
+  );
 
 }

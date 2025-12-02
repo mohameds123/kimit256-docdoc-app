@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kimit256docdoc/core/screens/bottom_nav_bar.dart';
 import 'package:kimit256docdoc/core/colors/colors_manager.dart';
 import 'package:kimit256docdoc/core/widgets/app_button.dart';
 import 'package:kimit256docdoc/core/widgets/app_form_field.dart';
@@ -33,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
       child: BlocConsumer<LoginCubit, LoginStates>(
         listener: (context, state) {
           if (state is LoginSuccessState) {
-            Navigator.pushReplacementNamed(context, Routes.home);
+            Navigator.pushReplacementNamed(context, Routes.navBar);
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(

@@ -1,0 +1,60 @@
+import 'package:flutter/material.dart';
+import 'package:kimit256docdoc/core/colors/colors_manager.dart';
+import 'package:kimit256docdoc/core/profile.dart';
+import 'package:kimit256docdoc/features/home/presentation/screens/home_screen.dart';
+
+import '../appointment.dart';
+import '../fav_screen.dart';
+
+class BottomNavBarScreen extends StatefulWidget {
+  const BottomNavBarScreen({super.key});
+
+  @override
+  State<BottomNavBarScreen> createState() => _BottomNavBarScreenState();
+}
+
+class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
+  int _currentIndex = 0;
+  final List<Widget> screens = const [
+    HomeScreen(),
+    AppointmentsScreen(),
+    FavoritesScreen(),
+    ProfileScreen(),
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: screens[_currentIndex],
+
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        selectedItemColor: ColorsManager.primaryColor,
+        unselectedItemColor: Colors.grey,
+        showUnselectedLabels: false,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_month_outlined),
+            label: 'Appointments',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite_outline),
+            label: 'Favorites',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_outline),
+            label: 'Profile',
+          ),
+        ],
+      ),
+    );
+  }
+}

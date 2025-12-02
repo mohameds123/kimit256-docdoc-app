@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kimit256docdoc/core/screens/bottom_nav_bar.dart';
 import 'package:kimit256docdoc/features/home/presentation/screens/home_screen.dart';
 import 'package:kimit256docdoc/features/login/presentation/screens/login_screen.dart';
 import 'package:kimit256docdoc/features/sign_up/presentation/screens/signup_screen.dart';
@@ -20,6 +21,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case Routes.home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
+      case Routes.navBar:
+        return MaterialPageRoute(builder: (_) => const BottomNavBarScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
