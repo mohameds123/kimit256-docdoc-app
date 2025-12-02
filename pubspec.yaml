@@ -43,6 +43,7 @@ dependencies:
   #Flutter widgets that make it easy to implement the BLoC (Business Logic Component) design pattern. Built to be used with the bloc state management package.
   flutter_bloc: ^9.1.1
   #A powerful HTTP networking package, supports Interceptors, Aborting and canceling a request, Custom adapters, Transformers, etc.
+  carousel_slider: ^5.1.1
   dio: ^5.9.0
 dev_dependencies:
   flutter_test:

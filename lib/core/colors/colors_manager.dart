@@ -8,4 +8,6 @@ class ColorsManager {
   static final borderColor = Color.fromRGBO(237, 237, 237, 1);
   static final lightgray = Color.fromRGBO(158, 158, 158, 1);
   static final shadeOfBlack = Color.fromRGBO(36, 36, 36, 1);
+  static final moreLightGrey = Color.fromRGBO(244, 248, 255, 1);
+
 }
