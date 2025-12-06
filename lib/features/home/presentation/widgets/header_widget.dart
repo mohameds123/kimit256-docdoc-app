@@ -13,16 +13,19 @@ class HeaderWidget extends StatefulWidget {
 
 class _HeaderWidgetState extends State<HeaderWidget> {
    String? userName;
-  Future <String> getUserName ()async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-   userName =  prefs.getString("userName");
-   print("GET USER NAME $userName");
-   return userName!;
-  }
+   Future<void> getUserName() async {
+     final SharedPreferences prefs = await SharedPreferences.getInstance();
+     final name = prefs.getString("userName");
+     print("GET USER NAME $name");
+
+     setState(() {
+       userName = name;
+     });
+   }
   @override
-  void initState()async {
+  void initState() {
     super.initState();
-    await getUserName();
+     getUserName();
   }
   @override
   Widget build(BuildContext context) {
