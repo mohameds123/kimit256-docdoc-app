@@ -38,7 +38,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       child: BlocConsumer<SignUpCubit, SignUpStates>(
         listener: (context, state) {
           if (state is SignUpSuccessState) {
-            Navigator.pushReplacementNamed(context, Routes.home);
+            Navigator.pushReplacementNamed(context, Routes.navBar);
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(
@@ -64,64 +64,66 @@ class _SignUpScreenState extends State<SignUpScreen> {
             body: SafeArea(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    WelcomeWidget(),
-                    SizedBox(height: 32.h),
-                    AppFormField(
-                      textEditingController: emailController,
-                      hintTxt: "Email",
-                    ),
-                    SizedBox(height: 12.h),
-                    AppFormField(
-                      textEditingController: passController,
-                      hintTxt: "Password",
-                    ),
-                    SizedBox(height: 12.h),
-                    AppFormField(
-                      textEditingController: passConfirmationController,
-                      hintTxt: "Password Confirmation",
-                    ),
-                    SizedBox(height: 12.h),
-                    AppFormField(
-                      textEditingController: nameController,
-                      hintTxt: "name",
-                    ),
-                    SizedBox(height: 12.h),
-                    AppFormField(
-                      textEditingController: phoneController,
-                      hintTxt: "phone",
-                    ),
-                    SizedBox(height: 12.h),
-                    AppFormField(
-                      textEditingController: genderController,
-                      hintTxt: "gender",
-                    ),
-                    SizedBox(height: 12.h),
-
-                    Center(
-                      child: (state is LoginLoadingState)
-                          ? CircularProgressIndicator()
-                          : AppButton(
-                        buttonTxt: "Register",
-                        onPress: () {
-                          context.read<SignUpCubit>().signUp(
-                              UserModel(
-                                  email: emailController.text,
-                                  password: passController.text,
-                                gender: genderController.text,
-                                name: nameController.text,
-                                passwordConfirmation: passConfirmationController.text,
-                                phone: phoneController.text
-                              ));
-
-                        },
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      WelcomeWidget(),
+                      SizedBox(height: 32.h),
+                      AppFormField(
+                        textEditingController: emailController,
+                        hintTxt: "Email",
                       ),
-                    ),
-                    SizedBox(height: 12.h),
-
-                  ],
+                      SizedBox(height: 12.h),
+                      AppFormField(
+                        textEditingController: passController,
+                        hintTxt: "Password",
+                      ),
+                      SizedBox(height: 12.h),
+                      AppFormField(
+                        textEditingController: passConfirmationController,
+                        hintTxt: "Password Confirmation",
+                      ),
+                      SizedBox(height: 12.h),
+                      AppFormField(
+                        textEditingController: nameController,
+                        hintTxt: "name",
+                      ),
+                      SizedBox(height: 12.h),
+                      AppFormField(
+                        textEditingController: phoneController,
+                        hintTxt: "phone",
+                      ),
+                      SizedBox(height: 12.h),
+                      AppFormField(
+                        textEditingController: genderController,
+                        hintTxt: "gender",
+                      ),
+                      SizedBox(height: 12.h),
+                  
+                      Center(
+                        child: (state is LoginLoadingState)
+                            ? CircularProgressIndicator()
+                            : AppButton(
+                          buttonTxt: "Register",
+                          onPress: () {
+                            context.read<SignUpCubit>().signUp(
+                                UserModel(
+                                    email: emailController.text,
+                                    password: passController.text,
+                                  gender: genderController.text,
+                                  name: nameController.text,
+                                  passwordConfirmation: passConfirmationController.text,
+                                  phone: phoneController.text
+                                ));
+                  
+                          },
+                        ),
+                      ),
+                      SizedBox(height: 12.h),
+                  
+                    ],
+                  ),
                 ),
               ),
             ),

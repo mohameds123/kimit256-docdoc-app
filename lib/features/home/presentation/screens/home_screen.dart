@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kimit256docdoc/core/colors/colors_manager.dart';
-import 'package:kimit256docdoc/core/styling/text_style.dart';
+
 import 'package:kimit256docdoc/features/home/presentation/widgets/header_widget.dart';
 
 import '../widgets/banner_widget.dart';
@@ -16,8 +15,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,8 +39,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-
-
     );
   }
 }
